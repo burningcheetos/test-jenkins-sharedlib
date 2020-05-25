@@ -87,6 +87,15 @@ def call(Map args) {
                     }
                 }
             }
+            stage ('call frontend') {
+                steps {
+                    script {
+                        echo "calling frontend"
+                        def front = new services().run_tests("frontend")
+                        println front
+                    }
+                }
+            }
             stage ('call mail') {
                 steps {
                     script {
