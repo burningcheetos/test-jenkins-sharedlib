@@ -1,76 +1,79 @@
 def call(Map args) {
-    agent any
 
-    stages {
-        stage ('start') {
-            steps {
-                script {
-                    branch = "${JOB_BASE_NAME}"
+    pipeline {
+        agent any
 
-                    sh """
-                        echo 'simple echo'
-                        echo ${JOB_NAME}
-                      
-                
-                        #stuff
-                        branch=${branch}
-                        echo $branch
+        stages {
+            stage ('start') {
+                steps {
+                    script {
+                        branch = "${JOB_BASE_NAME}"
 
-                    """
-                }
-            }
-        }
-        stage ('Get branch') {
-            steps {
-                script {
-                    sh """
-                        echo "${JOB_BASE_NAME}" | sed 's/\\%2F/\\//g' > /tmp/file.txt
-                        cat /tmp/file.txt
-                    """
-                }
-            }
-        }
-        stage ('Dev branch check') {
-            steps {
-                script {
-                    def git_branch = readFile("/tmp/file.txt").trim()
+                        sh """
+                            echo 'simple echo'
+                            echo ${JOB_NAME}
+                        
                     
-                    if (git_branch == "develop") {
-                        echo "develop branch - do stuff"
-                        args.develop = true
-                    }else{
-                        echo "skipping"
-                    }
-                }
-            }
-        }
-        stage ('Non Dev stuff') {
-            when {
-                expression {
-                    !args.develop
-                }
-            }
-            steps {
-                script {
-                    def git_branch = readFile("/tmp/file.txt").trim()
+                            #stuff
+                            branch=${branch}
+                            echo $branch
 
-                    if (git_branch == "develop") {
-                        return
-                    }else{
-                        echo "do more stuff"
+                        """
                     }
                 }
             }
-        }
-        stage ('Master stuff') {
-            when {
-                expression {
-                    !args.develop
+            stage ('Get branch') {
+                steps {
+                    script {
+                        sh """
+                            echo "${JOB_BASE_NAME}" | sed 's/\\%2F/\\//g' > /tmp/file.txt
+                            cat /tmp/file.txt
+                        """
+                    }
                 }
             }
-            steps {
-                script {
-                    echo "hold my stuff"
+            stage ('Dev branch check') {
+                steps {
+                    script {
+                        def git_branch = readFile("/tmp/file.txt").trim()
+                        
+                        if (git_branch == "develop") {
+                            echo "develop branch - do stuff"
+                            args.develop = true
+                        }else{
+                            echo "skipping"
+                        }
+                    }
+                }
+            }
+            stage ('Non Dev stuff') {
+                when {
+                    expression {
+                        !args.develop
+                    }
+                }
+                steps {
+                    script {
+                        def git_branch = readFile("/tmp/file.txt").trim()
+
+                        if (git_branch == "develop") {
+                            return
+                        }else{
+                            echo "do more stuff"
+                        }
+                    }
+                }
+            }
+            stage ('Master stuff') {
+                when {
+                    expression {
+                        !args.develop
+                    }
+                }
+                steps {
+                    script {
+                        echo "hold my stuff"
+                    }
                 }
             }
         }
