@@ -1,5 +1,7 @@
-
-def testA() {
-    println "testA is running"
+class db {
+    def testA() {
+        println "testA is running"
+    }
 }
+
 
