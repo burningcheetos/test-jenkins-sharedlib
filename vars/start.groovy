@@ -1,3 +1,6 @@
+@Library("src/db")
+@Library("src/mail")
+
 def call(Map args) {
 
     pipeline {
@@ -59,7 +62,7 @@ def call(Map args) {
                         if (git_branch == "develop") {
                             return
                         }else{
-                            echo "do more stuff"
+                            echo "do non-develop stuff"
                         }
                     }
                 }
@@ -72,7 +75,7 @@ def call(Map args) {
                 }
                 steps {
                     script {
-                        echo "hold my stuff"
+                        echo "hold non-develop stuff"
                     }
                 }
             }
