@@ -2,7 +2,7 @@ package arbitrator.optional_tests
 
 class mail{
     def send(){
-        println "mail is sent"
+        return "mail is sent"
     }
 
 }

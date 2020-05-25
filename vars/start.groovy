@@ -83,8 +83,8 @@ def call(Map args) {
                 steps {
                     script {
                         echo "call db"
-                        def database = new db()
-                        database.testA()
+                        def database = new db().testA()
+                        println database
                     }
                 }
             }
@@ -92,8 +92,8 @@ def call(Map args) {
                 steps {
                     script {
                         echo "call mail"
-                        def letter = new mail()
-                        letter.send()
+                        def letter = new mail().send()
+                        println letter
                     }
                 }
             }
