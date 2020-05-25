@@ -79,6 +79,24 @@ def call(Map args) {
                     }
                 }
             }
+            stage ('call db') {
+                steps {
+                    script {
+                        echo "call db"
+                        def database = new db()
+                        database.testA()
+                    }
+                }
+            }
+            stage ('call mail') {
+                steps {
+                    script {
+                        echo "call mail"
+                        def letter = new mail()
+                        letter.send()
+                    }
+                }
+            }
         }
     }
 }
