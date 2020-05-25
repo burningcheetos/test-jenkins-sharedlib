@@ -1,7 +1,8 @@
-package arbitrator
+package arbitrator.mandatory_tests
 
 import arbitrator.mandatory_tests.db
-import arbitrator.optional_tests.mail
+import arbitrator.mandatory_tests.frontend
+// import arbitrator.optional_tests.mail
 
 class services {
 
@@ -11,8 +12,8 @@ class services {
                 def result = new db().testA();
                 return result;
                 break;
-            case "mail":
-                def result = new mail().send();
+            case "frontend":
+                def result = new frontend().testFront();
                 return result;
                 break;
             default:
@@ -20,5 +21,4 @@ class services {
                 break;
         }
     }
-    
 }
