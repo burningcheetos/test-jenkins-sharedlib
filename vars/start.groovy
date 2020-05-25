@@ -1,7 +1,7 @@
 
 
-import mandatory_tests.db
-import optional_tests.mail
+import db
+import mail
 
 def call(Map args) {
 
