@@ -12,7 +12,7 @@ class services {
                 return result;
                 break;
             case "mail":
-                def result = new mail.send();
+                def result = new mail().send();
                 return result;
                 break;
             default:
