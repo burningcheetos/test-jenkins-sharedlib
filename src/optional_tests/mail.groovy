@@ -1,6 +1,4 @@
-class mail {
 
-    def send(){
-        println "mail is sent"
-    }
+def send(){
+    println "mail is sent"
 }
