@@ -100,8 +100,8 @@ def call(Map args) {
                 steps {
                     script {
                         echo "call default"
-                        def default = new services().run_tests("what")
-                        println default
+                        def ehh = new services().run_tests("what")
+                        println ehh
                     }
                 }
             }
