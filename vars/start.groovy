@@ -1,5 +1,4 @@
-import arbitrator.mandatory_tests.db
-import arbitrator.optional_tests.mail
+import arbitrator.mandatory_tests.services
 
 def call(Map args) {
 
@@ -83,7 +82,7 @@ def call(Map args) {
                 steps {
                     script {
                         echo "call db"
-                        def database = new db().testA()
+                        def database = new services().run_tests("db")
                         println database
                     }
                 }
@@ -92,8 +91,17 @@ def call(Map args) {
                 steps {
                     script {
                         echo "call mail"
-                        def letter = new mail().send()
+                        def letter = new services().run_tests("mail")
                         println letter
+                    }
+                }
+            }
+            stage ('call default case') {
+                steps {
+                    script {
+                        echo "call default"
+                        def default = new services().run_tests("what")
+                        println default
                     }
                 }
             }
