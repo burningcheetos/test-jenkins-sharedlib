@@ -1,5 +1,6 @@
-package mandatory_tests
-package optional_tests
+package mandatory_tests;
+package optional_tests;
+
 import mandatory_tests.db
 import optional_tests.mail
 
