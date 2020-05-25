@@ -1,5 +1,5 @@
-@Library("src/db")
-@Library("src/mail")
+import mandatory_tests.db
+import optiona_tests.mail
 
 def call(Map args) {
 
