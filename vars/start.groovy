@@ -1,3 +1,5 @@
+@Library('mandatory_tests')
+@Library('optional_tests')
 import mandatory_tests.db
 import optional_tests.mail
 
