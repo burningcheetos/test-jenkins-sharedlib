@@ -2,8 +2,8 @@
 
 package arbitrator
 
-import arbitrator.mandatory_tests.db
-import arbitrator.optional_tests.mail
+import db
+import mail
 
 def call(Map args) {
 
