@@ -1,3 +1,3 @@
-def send(){
+def mail(){
     println "mail sent"
 }
