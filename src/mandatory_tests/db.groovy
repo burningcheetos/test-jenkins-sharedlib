@@ -1,4 +1,6 @@
-def db(){
+class db {
 
-    println "in DB"
+    def testA() {
+        println "testA is running"
+    }
 }
